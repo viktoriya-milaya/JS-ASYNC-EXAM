@@ -1,11 +1,12 @@
-`use strict`
 
-import showSlider from './slider';
-import showCarousel from './carousel';
-import showImgInModal  from './gallery';
+import getApiData from './api';
+import createError404 from './error404';
 
 document.addEventListener('DOMContentLoaded', () => {
-    showSlider();
-    showCarousel(); 
-    showImgInModal(); 
+  try {
+    getApiData();
+  }
+  catch {
+    createError404();
+  }
 });

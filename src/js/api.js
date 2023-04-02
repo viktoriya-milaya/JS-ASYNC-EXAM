@@ -1,26 +1,21 @@
 
 import { createLoader, removeLoader } from './loader';
+import getWord from './word';
 import getDefinitionOfWord from './definition';
+import showError from './error';
 
-const errorSearch = document.getElementById('error');
-
-
-async function getApiData() {
-
+async function getApiData(word) {
   createLoader();
-
-  const getData = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/summer");
+  const getData = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
   const getDataJson = await getData.json();
   await removeLoader();
-
-  if (!getDataJson[0]) {
-    errorSearch.classList.toggle('d-none');
+  try {
+    getWord(getDataJson[0]);
+    getDataJson.forEach(el => getDefinitionOfWord(el));
   }
-  console.log(getDataJson)
-  getDataJson.forEach(el => getDefinitionOfWord(el));
-
-  // getDefinitionOfWord(getDataJson[0]);
-
+  catch {
+    showError(getDataJson);
+  }
 };
 
 export default getApiData;

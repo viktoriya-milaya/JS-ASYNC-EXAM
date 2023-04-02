@@ -30,9 +30,13 @@ body {
 
 }
 
+.main{
+    max-width: 80%;
+}
+
 .search-form{
     min-width: 300px;
-    /* max-width: 480px; */
+    max-width: 480px;
 }
 
 

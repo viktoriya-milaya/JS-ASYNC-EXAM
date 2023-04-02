@@ -9,16 +9,17 @@ async function getApiData() {
 
   createLoader();
 
-  const getData = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/template");
+  const getData = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/summer");
   const getDataJson = await getData.json();
   await removeLoader();
-  console.log(getDataJson);
 
   if (!getDataJson[0]) {
     errorSearch.classList.toggle('d-none');
   }
+  console.log(getDataJson)
+  getDataJson.forEach(el => getDefinitionOfWord(el));
 
-  getDefinitionOfWord(getDataJson[0]);
+  // getDefinitionOfWord(getDataJson[0]);
 
 };
 

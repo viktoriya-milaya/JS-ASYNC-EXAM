@@ -1,5 +1,4 @@
-# Frontend Bundle
-Bundle for frontend development studying for FE-126 group
+frontend development studying for FE-126 group
 - use this api https://dictionaryapi.dev/
 - create interface with text input
 - use input to get data from api and display list of results
